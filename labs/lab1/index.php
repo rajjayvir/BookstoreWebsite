@@ -9,9 +9,10 @@
     <?php
     // Define student details
     $studentName = "Jayvirsinh Raj";
-    $studentID = "B00907110";
+    $studentID = 907110;
     $program = "Computer Science";
     $isComputerScienceStudent = false; // Default to false
+
 
     // Check if the form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -30,7 +31,8 @@
     // Display program and student ID
     if ($isComputerScienceStudent) {
         echo "<p>You are a student in the $program program at Dalhousie University.</p>";
-        echo "<p>Your student ID is $studentID.</p>";
+        echo "<p>Your student ID is B00$studentID.</p>";
+        echo 5 + 5;
     } else {
         echo "<p>You are not a Computer Science student at Dalhousie University.</p>";
     }
