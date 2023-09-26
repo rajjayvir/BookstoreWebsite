@@ -39,7 +39,7 @@
         </div>
     </div>
     <footer>
-        <p>&copy;Copyright Jayvirsinh</p>
+        <p>&copy;Copyright Jayvirsinh Raj</p>
     </footer>
 
     <?php
