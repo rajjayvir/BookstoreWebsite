@@ -43,20 +43,16 @@
             <h2 class="text-center">Featured Books</h2>
             <div class="row">
                 <?php
-                // Include list.php to access the $books array
                 include('list.php');
 
-                // Loop through the $books array to display book information
                 foreach ($books as $book) {
                     ?>
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <img src="<?php echo $book['cover_image']; ?>" class="card-img-top" alt="Book Cover"
-                                style="width: 400px; height: 500px;">
+                                style="width: 70%; height: 50%;">
                             <div class="card-body">
-                                <h5 class="card-title">
-                                    <?php echo $book['title']; ?>
-                                </h5>
+                                <?php echo $book['title']; ?>
                                 <p class="card-text">by
                                     <?php echo $book['author']; ?>
                                 </p>
@@ -76,7 +72,6 @@
                                 <?php $isbnToDisplay = $book['isbn']; ?>
 
                                 <a href="books/<?php echo $isbnToDisplay; ?>.php" class="btn btn-primary">Buy</a>
-
                             </div>
                         </div>
                     </div>
@@ -92,7 +87,6 @@
         </p>
     </footer>
 
-    <!-- Include Bootstrap JS and jQuery -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>

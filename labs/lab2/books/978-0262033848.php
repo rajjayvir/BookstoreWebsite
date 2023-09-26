@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css"> 
     <title>
         <?php echo $selectedBook['title']; ?>
     </title>
-    <link rel="stylesheet" href="css/style.css"> <!-- Link to your CSS file -->
 </head>
 
 <body>
@@ -40,13 +40,10 @@
 
     <main>
         <?php
-        // Include list.php to access the $books array
         include('../list.php');
 
-        // ISBN of the book you want to display
         $isbn = '978-0262033848';
 
-        // Find the book with the matching ISBN
         $selectedBook = null;
         foreach ($books as $book) {
             if ($book['isbn'] === $isbn) {
@@ -56,11 +53,10 @@
         }
 
         if ($selectedBook) {
-            // Display book details
             echo '<section class="container mt-5">';
             echo '<div class="row">';
             echo '<div class="col-md-6">';
-            echo '<img src="../images/' . $selectedBook['cover_image'] . '" alt="Book Cover" class="img-fluid">';
+            echo '<img src="../' . $selectedBook['cover_image'] . '" alt="Book Cover" class="img-fluid" style="width: 50%; height: auto;">';
             echo '</div>';
             echo '<div class="col-md-6">';
             echo '<h2>' . $selectedBook['title'] . '</h2>';
@@ -69,14 +65,24 @@
             echo '<p class="font-weight-bold">Publication Year: ' . $selectedBook['publication_year'] . '</p>';
             echo '<p class="font-weight-bold">Genres: ' . implode(', ', $selectedBook['genres']) . '</p>';
             echo '<p>' . $selectedBook['blurb'] . '</p>';
+            echo '<button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                    Buy
+                </button>';
             echo '</div>';
             echo '</div>';
             echo '</section>';
         } else {
-            // Handle the case where the book with the given ISBN was not found
             echo '<p class="container mt-5">Book not found.</p>';
         }
         ?>
+        <div class="container mt-5">
+            <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                <div class="card card-body" style="width: 300px;">
+                    Coming Soon.
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="text-center mt-5">
@@ -87,6 +93,3 @@
 </body>
 
 </html>
-
-
-

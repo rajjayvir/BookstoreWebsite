@@ -1,3 +1,5 @@
+<!-- I have used https://chat.openai.com and https://www.amazon.ca to find the imformation of books that are listed in list.php.  -->
+
 <?php
 $books = [
     // Genre: Programming
