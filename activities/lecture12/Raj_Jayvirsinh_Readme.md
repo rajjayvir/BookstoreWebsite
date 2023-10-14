@@ -7,8 +7,8 @@
 
 * *Date Created*: 14 OCT 2023
 * *Last Modification Date*: 14 OCT 2023
-* *Lab URL*: <http://example.com/>
-* *Git URL*: <http://example.com/>
+* *Lab URL*: https://web.cs.dal.ca/~jraj/csci2170/activity/lecture12/index.php
+* *Git URL*: https://git.cs.dal.ca/jraj/csci-2170/-/tree/main/activities/lecture12
 
 ## Authors
 
