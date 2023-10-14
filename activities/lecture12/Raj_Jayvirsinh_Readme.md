@@ -18,9 +18,9 @@
 
 
 ## Regex
-First Name: /^[a-zA-Z\s]+$/
-Last Name: /^[a-zA-Z\s'-]+$/
-Password: /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[^a-zA-Z0-9]).{12,}$/
+firstName: /^[a-zA-Z]+\s?[a-zA-Z]*$/
+lastName: /^[a-zA-Z'-]+$/i/
+password: /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[\W_]).{12,}$/
 
 ## Test Cases
 First Nane: Jay, Jay Vir, Jay vir

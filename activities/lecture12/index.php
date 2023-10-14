@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	} else {
 		$firstName = clean($_POST['firstName']);
 		// Allow letters, be non-case sensitive, and provide the option to include a middle name
-		if (!preg_match('/^[a-zA-Z\s]+$/', $firstName)) {
+		if (!preg_match('/^[a-zA-Z]+\s?[a-zA-Z]*$/', $firstName)) {
 			$firstName = 'Invalid First Name';
 		} else {
 			$firstName = 'Valid First Name';
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	} else {
 		$lastName = clean($_POST['lastName']);
 		// Allow letters, be non-case sensitive, and allow for the use of apostrophes and hyphens
-		if (!preg_match("/^[a-zA-Z\s'-]+$/", $lastName)) {
+		if (!preg_match("/^[a-zA-Z'-]+$/i/", $lastName)) {
 			$lastName = 'Invalid Last Name';
 		} else {
 			$lastName = 'Valid Last Name';
