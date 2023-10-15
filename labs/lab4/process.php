@@ -1,4 +1,48 @@
 <?php
+// Define functions for input validation
+function validateFirstName($first_name) {
+    if (empty($first_name)) {
+        return "First Name is required.";
+    } elseif (!filter_var($first_name, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z]+\s?[a-zA-Z]*$/")))) {
+        return "Invalid First Name format.";
+    }
+    return null; // No error
+}
+
+function validateLastName($last_name) {
+    if (empty($last_name)) {
+        return "Last Name is required.";
+    } elseif (!filter_var($last_name, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^[a-zA-Z' -]+$/i")))) {
+        return "Invalid Last Name format.";
+    }
+    return null; // No error
+}
+
+function validateEmail($email) {
+    if (empty($email)) {
+        return "Email is required.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return "Invalid email format.";
+    }
+    return null; // No error
+}
+
+function validatePassword($password) {
+    if (empty($password)) {
+        return "Password is required.";
+    } elseif (!filter_var($password, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[\W_]).{12,}$/")))) {
+        return "Invalid password format.";
+    }
+    return null; // No error
+}
+
+function validateConfirmPassword($password, $confirm_password) {
+    if ($password !== $confirm_password) {
+        return "Passwords do not match.";
+    }
+    return null; // No error
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
     $first_name = $_POST["first_name"];
@@ -10,38 +54,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Initialize an array to store validation errors
     $errors = [];
 
-    // Validate First Name
-    if (empty($first_name)) {
-        $errors[] = "First Name is required.";
-    } elseif (!preg_match("/^[a-zA-Z]+( [a-zA-Z]+)?$/", $first_name)) {
-        $errors[] = "Invalid First Name format.";
-    }
+    // Validate each input and store any errors
+    $errors[] = validateFirstName($first_name);
+    $errors[] = validateLastName($last_name);
+    $errors[] = validateEmail($email);
+    $errors[] = validatePassword($password);
+    $errors[] = validateConfirmPassword($password, $confirm_password);
 
-    // Validate Last Name
-    if (empty($last_name)) {
-        $errors[] = "Last Name is required.";
-    } elseif (!preg_match("/^[a-zA-Z' -]+$/", $last_name)) {
-        $errors[] = "Invalid Last Name format.";
-    }
-
-    // Validate Email
-    if (empty($email)) {
-        $errors[] = "Email is required.";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Invalid email format.";
-    }
-
-    // Validate Password
-    if (empty($password)) {
-        $errors[] = "Password is required.";
-    } elseif (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&!])[A-Za-z\d@#$%^&!]{12,}$/", $password)) {
-        $errors[] = "Invalid password format.";
-    }
-
-    // Confirm Password
-    if ($password !== $confirm_password) {
-        $errors[] = "Passwords do not match.";
-    }
+    // Remove null values from the errors array
+    $errors = array_filter($errors);
 
     // If there are no validation errors, process the form data
     if (empty($errors)) {
@@ -54,7 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 

@@ -19,7 +19,7 @@
 
 ## Regex
 firstName: /^[a-zA-Z]+\s?[a-zA-Z]*$/
-lastName: /^[a-zA-Z'-]+$/i/
+lastName: /^[a-zA-Z' -]+$/i
 password: /^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[\W_]).{12,}$/
 
 ## Test Cases

@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	} else {
 		$lastName = clean($_POST['lastName']);
 		// Allow letters, be non-case sensitive, and allow for the use of apostrophes and hyphens
-		if (!preg_match("/^[a-zA-Z'-]+$/i/", $lastName)) {
+		if (!preg_match("/^[a-zA-Z' -]+$/i", $lastName)) {
 			$lastName = 'Invalid Last Name';
 		} else {
 			$lastName = 'Valid Last Name';
