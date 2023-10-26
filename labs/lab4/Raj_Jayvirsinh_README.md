@@ -8,7 +8,7 @@
 * *Date Created*: 05 OCT 2023
 * *Last Modification Date*: 05 OCT 2023
 * *Lab URL*: https://web.cs.dal.ca/~jraj/csci2170/lab4/index.php
-* *Git URL*: https://git.cs.dal.ca/jraj/csci-2170
+* *Git URL*: https://git.cs.dal.ca/jraj/csci-2170/-/tree/main/labs/lab4
 
 ## Authors
 
