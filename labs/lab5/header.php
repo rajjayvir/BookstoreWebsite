@@ -1,6 +1,3 @@
-<?php
-include('pagecount.php'); // Include the page count script
-?>
 <!DOCTYPE html>
 <html lang="en">
 

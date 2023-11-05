@@ -1,8 +1,3 @@
-<?php
-include('includes/helpers.php');
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,9 +24,6 @@ include('includes/helpers.php');
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="nameList.php">List</a>
                         </li>
-                    </ul>
-                    <ul class="navbar-nav">
-                        <?php include('pageCount.php'); ?>
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
