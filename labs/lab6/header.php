@@ -1,3 +1,8 @@
+<?php
+include('includes/helpers.php');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +16,6 @@
 
 <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -29,7 +33,18 @@
                     <ul class="navbar-nav">
                         <?php include('pageCount.php'); ?>
                     </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="cart.php">
+                                <i class="fas fa-shopping-cart"></i> Cart
+                                <?php echo count($_SESSION['cart']) ?>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
+</body>
+
+</html>
