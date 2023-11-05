@@ -1,12 +1,12 @@
 <!--- The following README.md sample file was adapted from https://gist.github.com/PurpleBooth/109311bb0361f32d87a2#file-readme-template-md by Gabriella Mosquera for academic use ---> 
 <!--- You may delete any comments in this sample README.md file. If needing to use as a .txt file then simply delete all comments, edit as needed, and save as a README.txt file --->
 
-# Lab 5
+# Lab 6
 
-* *Date Created*: 25 OCT 2023
-* *Last Modification Date*: 25 OCT 2023
-* *Lab URL*: https://web.cs.dal.ca/~jraj/csci2170/lab5/
-* *Git URL*: https://git.cs.dal.ca/jraj/csci-2170/-/tree/main/labs/lab5
+* *Date Created*: 05 NOV 2023
+* *Last Modification Date*: 05 NOV 2023
+* *Lab URL*: https://web.cs.dal.ca/~jraj/csci2170/lab6/
+* *Git URL*: https://git.cs.dal.ca/jraj/csci-2170/-/tree/main/labs/lab6
 
 ## Authors
 * [Name](jayvir@dal.ca) - *(Student)*

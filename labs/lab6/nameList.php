@@ -1,5 +1,15 @@
 <?php
+session_start();
 
+if (isset($_POST['action']) && $_POST['action'] == 'AddToCart') {
+    $item = array(
+        'title' => $_POST['title'],
+        'price' => $_POST['price']
+    );
+    $_SESSION['cart'][] = $item;
+    header('Location: nameList.php');
+    exit;
+}
 
 include('header.php');
 // Include the header template
@@ -25,7 +35,13 @@ include('header.php');
                 echo '<tr>';
                 echo '<td>' . $book['title'] . '</td>';
                 echo '<td>$' . $book['price'] . '</td>';
-                echo '<td><a href="books/' . $book['isbn'] . '.php" class="btn btn-primary">Buy</a></td>';
+                echo '<td>
+                    <form action="" method="post">
+                        <input type="hidden" name="title" value="' . htmlspecialchars($book["title"]) . '">
+                        <input type="hidden" name="price" value="' . htmlspecialchars($book["price"]) . '">
+                        <button type="submit" class="btn btn-success" name="action" value="AddToCart">Add to Cart</button>
+                    </form>
+                </td>';
                 echo '</tr>';
             }
             ?>
