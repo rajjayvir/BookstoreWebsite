@@ -3,10 +3,10 @@
 
 # Lab 6
 
-* *Date Created*: 05 NOV 2023
-* *Last Modification Date*: 05 NOV 2023
-* *Lab URL*: https://web.cs.dal.ca/~jraj/csci2170/lab6/
-* *Git URL*: https://git.cs.dal.ca/jraj/csci-2170/-/tree/main/labs/lab6
+* *Date Created*: 08 NOV 2023
+* *Last Modification Date*: 08 NOV 2023
+* *Lab URL*: https://web.cs.dal.ca/~jraj/csci2170/lab7/
+* *Git URL*: https://git.cs.dal.ca/jraj/csci-2170/-/tree/main/labs/lab7
 
 ## Authors
 * [Name](jayvir@dal.ca) - *(Student)*

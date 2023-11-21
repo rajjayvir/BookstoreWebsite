@@ -5,6 +5,7 @@ $errors = array();
 
 //Regex
 $regex_name = '/^[A-Za-z]+( [A-Za-z]+)?$/';
+$regex_lastName = "/^[a-zA-Z' -]+$/i";
 $regex_email = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/';
 $regex_password = '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{12,}$/';
 
@@ -17,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate Last Name
     $last_name = $_POST["last_name"];
-    if (!preg_match($regex_name, $last_name)) {
+    if (!preg_match($regex_lastName, $last_name)) {
         $errors["last_name"] = "Invalid Last Name";
     }
 
