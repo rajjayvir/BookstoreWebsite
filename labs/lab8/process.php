@@ -29,8 +29,8 @@ function validatePassword($password)
 {
     if (empty($password)) {
         return "Password is required.";
-    } elseif (strlen($password) < 8) {
-        return "Password must be at least 8 characters long.";
+    } elseif (!filter_var($password, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z])(?=.*[\W_]).{12,}$/")))) {
+        return "Invalid password format.";
     }
     return null; // No error
 }

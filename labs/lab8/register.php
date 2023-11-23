@@ -10,12 +10,14 @@
 
 <body>
     <h1>Registration Form - Validation</h1>
+
     <?php
-    // Include database connection logic
+
     $servername = 'db.cs.dal.ca';
     $username = 'jraj';
     $password = '8jNysXA9ZQd9ra5XihisAbdYQ';
     $dbname = 'jraj';
+
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -56,6 +58,7 @@
 
     $username = $password = $confirm_password = "";
     $errors = [];
+    $success_message = "";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Retrieve form data
@@ -81,8 +84,9 @@
             $stmt->bind_param("ss", $username, $hashed_password);
 
             if ($stmt->execute()) {
-                // Redirect to a welcome page or login page
-                header("Location: login.php");
+                // Display success message
+                $success_message = "Registration successful! Redirecting to login page...";
+                header("Refresh: 3; URL=login.php");  // Redirect after 3 seconds
                 exit;
             } else {
                 echo "Error: " . $stmt->error;
@@ -92,30 +96,44 @@
         }
     }
     ?>
+
+    <!-- Display validation errors -->
+    <?php if (!empty($errors)): ?>
+        <div class="error-messages">
+            <ul>
+                <?php foreach ($errors as $error): ?>
+                    <li>
+                        <?php echo $error; ?>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    <?php endif; ?>
+
+    <!-- Display success message -->
+    <?php if ($success_message): ?>
+        <div class="success-message">
+            <?php echo $success_message; ?>
+        </div>
+    <?php endif; ?>
+
+    <!-- Registration Form -->
     <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <label for="username">Username:</label>
         <input type="text" name="username" id="username" value="<?php echo $username; ?>">
-        <span class="error">
-            <?php echo $errors['username'] ?? ''; ?>
-        </span>
         <br>
 
         <label for="password">Password:</label>
         <input type="password" name="password" id="password">
-        <span class="error">
-            <?php echo $errors['password'] ?? ''; ?>
-        </span>
         <br>
 
         <label for="confirm_password">Confirm Password:</label>
         <input type="password" name="confirm_password" id="confirm_password">
-        <span class="error">
-            <?php echo $errors['confirm_password'] ?? ''; ?>
-        </span>
         <br>
 
         <input type="submit" value="Register">
     </form>
+
 </body>
 
 </html>
