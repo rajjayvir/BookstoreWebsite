@@ -3,6 +3,8 @@ session_start();
 
 include "list.php";
 
+$userWelcomeMessage = isset($_SESSION['user']) ? "Welcome back, " . htmlspecialchars($_SESSION['user']) . "!" : "";
+
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = array();
 }
@@ -49,6 +51,9 @@ include('header.php');
 
 <main>
     <section class="container mt-5">
+        <h2 class="text-center">
+            <?php echo $userWelcomeMessage; ?>
+        </h2>
         <h2 class="text-center">Featured Books</h2>
         <div class="row">
             <?php

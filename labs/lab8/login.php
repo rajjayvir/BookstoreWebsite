@@ -4,8 +4,7 @@
 <head>
     <title>Login Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-        crossorigin="anonymous">
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
@@ -33,14 +32,45 @@
     </div>
 
     <?php
+    session_start();
+    // Include database connection logic
+    // Replace these variables with your actual database credentials
+    $servername = 'db.cs.dal.ca';
+    $username = 'jraj';
+    $password = '8jNysXA9ZQd9ra5XihisAbdYQ';
+    $dbname = 'jraj';
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['username'];
         $password = $_POST['password'];
 
-        $_SESSION['user'] = $username;
-        setcookie('user', $username, time() + 3600, '/');
-        header('Location: index.php'); 
-        
+        // Fetch user data from the database based on the provided username
+        $stmt = $conn->prepare("SELECT Username, PasswordHash FROM Users WHERE Username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt->bind_result($dbUsername, $dbPasswordHash);
+        $stmt->fetch();
+        $stmt->close();
+
+        // Verify the password
+        if ($dbUsername && password_verify($password, $dbPasswordHash)) {
+            // Login successful, set session and redirect
+            $_SESSION['user'] = $dbUsername;
+            setcookie('user', $dbUsername, time() + 3600, '/');
+            header('Location: index.php');
+            exit;
+        } else {
+            // Login failed
+            echo '<div class="alert alert-danger" role="alert">Invalid username or password.</div>';
+        }
     }
     ?>
 
