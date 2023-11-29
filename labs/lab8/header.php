@@ -33,6 +33,8 @@
                             </a>
                             <a class="nav-link" href="login.php">
                                 <i class="fas fa-user"></i> Login
+                                <a class="nav-link" href="profile.php">Profile</a>
+
                         </li>
                     </ul>
                 </div>
