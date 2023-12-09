@@ -34,7 +34,7 @@
                             <a class="nav-link" href="login.php">
                                 <i class="fas fa-user"></i> Login
                                 <a class="nav-link" href="profile.php">Profile</a>
-
+                                <a class="nav-link" href="register.php">Register</a>
                         </li>
                     </ul>
                 </div>
@@ -42,5 +42,4 @@
         </nav>
     </header>
 </body>
-
 </html>
